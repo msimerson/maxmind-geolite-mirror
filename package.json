@@ -1,0 +1,39 @@
+{
+  "name": "maxmind-geolite-mirror",
+  "version": "0.0.3",
+  "homepage": "https://github.com/msimerson/maxmind-geolite-mirror",
+  "description": "Mirror maxmind dbs from geolite.maxmind.com",
+
+  "author": {
+      "name": "Matt Simerson",
+      "url": "http://matt.simerson.net",
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/msimerson/maxmind-geolite-mirror.git"
+  },
+  
+  "bugs": {
+      "url": "https://github.com/msimerson/maxmind-geolite-mirror/issues",
+  },
+  
+  "bin": {
+      "maxmind-geolite-mirror": "./bin/maxmind-geolite-mirror",
+  },
+  
+  "main": "bin/maxmind-geolite-mirror.js",
+  
+  "keywords": [
+    "geolite",
+    "geoip",
+    "download",
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^2.0.1"
+  },
+  "license": "MIT"
+}
