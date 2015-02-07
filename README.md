@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/msimerson/maxmind-geolite-mirror.svg)](https://travis-ci.org/msimerson/maxmind-geolite-mirror)
 
+[![Coverage Status](https://coveralls.io/repos/msimerson/maxmind-geolite-mirror/badge.svg)](https://coveralls.io/r/msimerson/maxmind-geolite-mirror)
+
+[![Dependencies](https://david-dm.org/msimerson/maxmind-geolite-mirror.svg)](https://david-dm.org/msimerson/maxmind-geolite-mirror)
+
 # maxmind-geolite-mirror
 
 Mirror maxmind GeoIP databases from geolite.maxmind.com

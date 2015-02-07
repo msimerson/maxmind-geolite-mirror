@@ -1,31 +1,22 @@
 #!/usr/local/bin/node
 'use strict';
 
+if (process.env.COVERAGE) require('blanket');
+
 var fs    = require('fs');
 var http  = require('http');
 var util  = require('util');
 var zlib  = require('zlib');
 
-var dbDir = '/usr/local/share/GeoIP/';
-
-//               local-filename              geolite-name
-var geoIpDbs = [
-    { local: 'GeoIP.dat',        remote: 'GeoLiteCountry/GeoIP.dat.gz' },
-    { local: 'GeoIPCity.dat',    remote: 'GeoLiteCity.dat.gz' },
-    { local: 'GeoIPCityv6.dat',  remote: 'GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz' },
-    { local: 'GeoIPv6.dat',      remote: 'GeoIPv6.dat.gz' },
-    { local: 'GeoIPASNum.dat',   remote: 'asnum/GeoIPASNum.dat.gz' },
-    { local: 'GeoIPASNumv6.dat', remote: 'asnum/GeoIPASNumv6.dat.gz' },
-];
+var config = require('../lib/config');
 
 var httpReqOpts = function () {
     return {
         method: 'HEAD',
-        path: '/download/geoip/database/',
-        hostname: 'geolite.maxmind.com',
-        port: 80,
+        hostname: config.hostName,
+        port: config.hostPort,
         headers: {
-            'User-Agent': 'MaxMind-geolite-mirror-simple/0.0.3',
+            'User-Agent': config.userAgent,
         },
         agent: false,
     };
@@ -71,25 +62,26 @@ var isRemoteNewer = function (dest, httpOpts, done) {
 var download = function(dest, opts, done) {
 
     var request = http.request(opts, function (res) {
-        if (res.statusCode === 200) {
-            var file = fs.createWriteStream(dest + '.tmp');
-            res.pipe(zlib.createGunzip()).pipe(file);
-            file.on('finish', function () {
-                // console.log("wrote to file " + dest + '.tmp');
-                file.close(function (err) {
-                    if (err) throw err;
-                    // console.log("moved " + dest + '.tmp to ' + dest);
-                    fs.rename(dest + '.tmp', dest, function (err) {
-                        if (err) throw err;
-                        console.log('saved ' + dest);
-                        done();
-                    });
-                });
-            });
+        if (res.statusCode !== 200) {
+            console.error('response code ' + res.statusCode + ' not handled!');
+            console.error('HEADERS: ' + JSON.stringify(res.headers));
             return;
         }
-        console.error('response code ' + res.statusCode + ' not handled!');
-        console.error('HEADERS: ' + JSON.stringify(res.headers));
+
+        var file = fs.createWriteStream(dest + '.tmp');
+        res.pipe(zlib.createGunzip()).pipe(file);
+        file.on('finish', function () {
+            // console.log("wrote to file " + dest + '.tmp');
+            file.close(function (err) {
+                if (err) throw err;
+                // console.log("moved " + dest + '.tmp to ' + dest);
+                fs.rename(dest + '.tmp', dest, function (err) {
+                    if (err) throw err;
+                    console.log('saved ' + dest);
+                    done();
+                });
+            });
+        });
     })
     .on('error', function (e) {
         console.error(e);
@@ -103,9 +95,9 @@ var download = function(dest, opts, done) {
 var doOne = function (item, done) {
 
     var opts = new httpReqOpts();
-        opts.path = opts.path + item.remote;
+        opts.path = config.urlPath + item.remote;
 
-    var dest = dbDir  + item.local;
+    var dest = config.dbDir  + item.local;
 
     isRemoteNewer(dest, opts, function (shouldGet) {
         if (!shouldGet) return done();
@@ -117,7 +109,7 @@ var doOne = function (item, done) {
 };
 
 // check each file, in series (poor mans async.eachSeries)
-doOne(geoIpDbs.shift(), function iterator () {
-    if (!geoIpDbs.length) return;
-    doOne(geoIpDbs.shift(), iterator);
+doOne(config.geoIpDbs.shift(), function iterator () {
+    if (!config.geoIpDbs.length) return;
+    doOne(config.geoIpDbs.shift(), iterator);
 });
