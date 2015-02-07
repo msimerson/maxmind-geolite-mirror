@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/msimerson/maxmind-geolite-mirror.svg)](https://travis-ci.org/msimerson/maxmind-geolite-mirror)
+
 # maxmind-geolite-mirror
 
 Mirror maxmind GeoIP databases from geolite.maxmind.com
