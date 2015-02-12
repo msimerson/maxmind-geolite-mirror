@@ -34,5 +34,5 @@ file is newer than the local version.
 [cov-url]: https://coveralls.io/r/msimerson/maxmind-geolite-mirror
 [npm-image]: https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true
 [npm-url]: https://nodei.co/npm/maxmind-geolite-mirror/
-[win-ci-img]: https://ci.appveyor.com/api/projects/status/uhej33x4x1tcd79r?svg=true
-[win-ci-url]: https://ci.appveyor.com/project/msimerson/node-address-rfc2821
+[win-ci-img]: https://ci.appveyor.com/api/projects/status/1e2vtbq1ekfvvwl7/branch/master?svg=true
+[win-ci-url]: https://ci.appveyor.com/project/msimerson/maxmind-geolite-mirror/branch/master
