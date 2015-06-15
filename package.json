@@ -44,7 +44,8 @@
     "grunt-mocha-test": "^0.12.7",
     "jshint": "^2.6.0",
     "mocha": "^2.1.0",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha-lcov-reporter": "0.0.1",
+    "rewire": "^2.3.4"
   },
   "license": "MIT",
   "files": [

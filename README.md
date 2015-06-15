@@ -25,6 +25,11 @@ The last command will download all the databases to the GeoIP share directory.
 Set this to run once a week or so. Downloads will only happen if the remote
 file is newer than the local version.
 
+## Custom path to store maxmind database
+If access to /usr/local/share/GeoIP is unavailable, the following environment
+variable is available: MAXMIND_DB_DIR. E.g.
+
+    export MAXMIND_DB_DIR=/home/example/maxmind-db
 
 [ci-image]: https://travis-ci.org/msimerson/maxmind-geolite-mirror.svg
 [ci-url]:  https://travis-ci.org/msimerson/maxmind-geolite-mirror
