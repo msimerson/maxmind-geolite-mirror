@@ -31,6 +31,25 @@ variable is available: MAXMIND_DB_DIR. E.g.
 
     export MAXMIND_DB_DIR=/home/example/maxmind-db
 
+
+## Contributions
+
+Contributions are welcome, especially if they include tests and are in the form of squashed GitHub Pull Requests.
+
+### How to squash:
+
+````sh
+git remote add msimerson https://github.com/msimerson/maxmind-geolite-mirror.git
+git rebase -i msimerson/master
+````
+
+Then change `pick` to `s` for all but the first commit and save changes. Then force push the squashed branch to your repo:
+
+````sh
+git push -f origin
+````
+
+
 [ci-image]: https://travis-ci.org/msimerson/maxmind-geolite-mirror.svg
 [ci-url]:  https://travis-ci.org/msimerson/maxmind-geolite-mirror
 [dep-img]: https://david-dm.org/msimerson/maxmind-geolite-mirror.svg
