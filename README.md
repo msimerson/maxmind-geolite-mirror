@@ -1,9 +1,7 @@
 [![Build Status][ci-image]][ci-url]
-[![Dependencies][dep-img]][dep-url]
 [![Coverage Status][cov-img]][cov-url]
 [![WinCI status][win-ci-img]][win-ci-url]
 
-[![NPM][npm-image]][npm-url]
 
 # maxmind-geolite-mirror
 
@@ -35,21 +33,13 @@ variable is available: MAXMIND_DB_DIR. E.g.
 ## Contributions
 
 Contributions are welcome, especially if they include tests and are in a
-squashed GitHub Pull Request. See DEVELOP.md
+squashed GitHub Pull Request. See [DEVELOP.md](DEVELOP.md)
 
-### How to squash:
+-------------
+These badges seem not to be as reliable, so they moved down here.
 
-````sh
-git remote add msimerson https://github.com/msimerson/maxmind-geolite-mirror.git
-git rebase -i msimerson/master
-````
-
-Then change `pick` to `s` for all but the first commit and save changes. Then force push the squashed branch to your repo:
-
-````sh
-git push -f origin
-````
-
+[![Dependencies][dep-img]][dep-url]
+[![NPM][npm-image]][npm-url]
 
 [ci-image]: https://travis-ci.org/msimerson/maxmind-geolite-mirror.svg
 [ci-url]:  https://travis-ci.org/msimerson/maxmind-geolite-mirror
