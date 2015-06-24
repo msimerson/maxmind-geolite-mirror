@@ -34,7 +34,8 @@ variable is available: MAXMIND_DB_DIR. E.g.
 
 ## Contributions
 
-Contributions are welcome, especially if they include tests and are in the form of squashed GitHub Pull Requests.
+Contributions are welcome, especially if they include tests and are in a
+squashed GitHub Pull Request. See DEVELOP.md
 
 ### How to squash:
 
