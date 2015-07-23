@@ -1,4 +1,7 @@
 
+
+    - added Contributors
+
 # 1.05  2015-06-23  @msimerson
 
     - enable testing on node 0.12 (remove 0.11)

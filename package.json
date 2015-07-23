@@ -7,6 +7,9 @@
     "name": "Matt Simerson",
     "url": "http://matt.simerson.net"
   },
+  "contributors": {
+    "name": "Carl Banbury"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/msimerson/maxmind-geolite-mirror.git"
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "blanket": "^1.1.6",
+    "contributors": "^0.5.0",
     "coveralls": "^2.11.2",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",

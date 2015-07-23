@@ -38,6 +38,10 @@ squashed GitHub Pull Request. See [DEVELOP.md](DEVELOP.md)
 -------------
 These badges seem not to be as reliable, so they moved down here.
 
+### Contributors
+
+- Carl Banbury
+
 [![Dependencies][dep-img]][dep-url]
 [![NPM][npm-image]][npm-url]
 
