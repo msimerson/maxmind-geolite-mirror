@@ -5,7 +5,6 @@ if (process.env.COVERAGE) require('blanket');
 
 var fs    = require('fs');
 var http  = require('http');
-var util  = require('util');
 var zlib  = require('zlib');
 
 var config = require('../lib/config');
@@ -75,8 +74,8 @@ var download = function(dest, opts, done) {
             file.close(function (err) {
                 if (err) throw err;
                 // console.log("moved " + dest + '.tmp to ' + dest);
-                fs.rename(dest + '.tmp', dest, function (err) {
-                    if (err) throw err;
+                fs.rename(dest + '.tmp', dest, function (err2) {
+                    if (err2) throw err2;
                     console.log('saved ' + dest);
                     done();
                 });
@@ -98,7 +97,7 @@ var download = function(dest, opts, done) {
 var doOne = function (item, done) {
 
     var opts = new httpReqOpts();
-        opts.path = config.urlPath + item.remote;
+    opts.path = config.urlPath + item.remote;
 
     var dest = config.dbDir  + item.local;
 

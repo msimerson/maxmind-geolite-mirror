@@ -49,8 +49,8 @@ These badges seem not to be as reliable, so they moved down here.
 [ci-url]:  https://travis-ci.org/msimerson/maxmind-geolite-mirror
 [dep-img]: https://david-dm.org/msimerson/maxmind-geolite-mirror.svg
 [dep-url]: https://david-dm.org/msimerson/maxmind-geolite-mirror
-[cov-img]: https://coveralls.io/repos/msimerson/maxmind-geolite-mirror/badge.svg
-[cov-url]: https://coveralls.io/r/msimerson/maxmind-geolite-mirror
+[cov-img]: https://codecov.io/github/msimerson/maxmind-geolite-mirror/coverage.svg?branch=master
+[cov-url]: https://codecov.io/github/msimerson/maxmind-geolite-mirror?branch=master
 [npm-image]: https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true
 [npm-url]: https://nodei.co/npm/maxmind-geolite-mirror/
 [win-ci-img]: https://ci.appveyor.com/api/projects/status/1e2vtbq1ekfvvwl7/branch/master?svg=true
