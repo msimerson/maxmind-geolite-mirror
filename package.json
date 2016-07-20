@@ -1,6 +1,6 @@
 {
   "name": "maxmind-geolite-mirror",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "homepage": "https://github.com/msimerson/maxmind-geolite-mirror",
   "description": "Mirror maxmind dbs from geolite.maxmind.com",
   "author": {
@@ -19,11 +19,6 @@
   },
   "bin": {
     "maxmind-geolite-mirror": "./bin/maxmind-geolite-mirror"
-  },
-  "config": {
-    "blanket": {
-      "pattern": "lib"
-    }
   },
   "main": "bin/maxmind-geolite-mirror",
   "keywords": [

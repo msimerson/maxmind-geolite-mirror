@@ -1,3 +1,6 @@
+# 1.0.7 - 2016-07-20
+
+    - added geolite2 databases to DB list
 
 # 1.0.6 - 2016-04-05
 

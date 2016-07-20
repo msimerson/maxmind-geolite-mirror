@@ -1,12 +1,12 @@
 [![Build Status][ci-image]][ci-url]
 [![Coverage Status][cov-img]][cov-url]
 [![WinCI status][win-ci-img]][win-ci-url]
+[![Dependencies][dep-img]][dep-url]
 
 
 # maxmind-geolite-mirror
 
-Mirror maxmind GeoIP databases from geolite.maxmind.com
-
+Mirror maxmind GeoIP databases from geolite.maxmind.com. Geolite version 1 and version 2 databases are mirrored.
 
 ## Install
 
@@ -24,6 +24,7 @@ Set this to run once a week or so. Downloads will only happen if the remote
 file is newer than the local version.
 
 ## Custom path to store maxmind database
+
 If access to /usr/local/share/GeoIP is unavailable, the following environment
 variable is available: MAXMIND_DB_DIR. E.g.
 
@@ -32,18 +33,17 @@ variable is available: MAXMIND_DB_DIR. E.g.
 
 ## Contributions
 
-Contributions are welcome, especially if they include tests and are in a
-squashed GitHub Pull Request. See [DEVELOP.md](DEVELOP.md)
+Contributions are welcome, especially if they include tests. See [DEVELOP.md](DEVELOP.md)
 
--------------
-These badges seem not to be as reliable, so they moved down here.
 
 ### Contributors
 
 - Carl Banbury
 
-[![Dependencies][dep-img]][dep-url]
+### badges
+
 [![NPM][npm-image]][npm-url]
+
 
 [ci-image]: https://travis-ci.org/msimerson/maxmind-geolite-mirror.svg
 [ci-url]:  https://travis-ci.org/msimerson/maxmind-geolite-mirror
