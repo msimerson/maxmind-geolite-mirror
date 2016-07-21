@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-if (process.env.COVERAGE) require('blanket');
-
 var fs    = require('fs');
 var http  = require('http');
 var zlib  = require('zlib');
