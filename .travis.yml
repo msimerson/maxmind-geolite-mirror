@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-    - "5"
+    - "6"
     - "4"
     #- iojs   No longer maintained
     #- "0.12" Maintenance ending 2017-04-01
