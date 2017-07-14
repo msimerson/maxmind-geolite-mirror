@@ -29,15 +29,12 @@
     "maxmind"
   ],
   "scripts": {
+    "lint": "./node_modules/.bin/eslint bin/* lib/*.js test/*.js",
     "test": "./node_modules/.bin/mocha"
   },
   "devDependencies": {
     "contributors": "*",
     "eslint": "*",
-    "grunt": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-eslint": "*",
-    "grunt-mocha-test": "*",
     "mocha": "*",
     "rewire": "*"
   },
@@ -45,7 +42,6 @@
   "files": [
     "bin",
     "lib",
-    "test",
-    "Gruntfile.js"
+    "test"
   ]
 }
