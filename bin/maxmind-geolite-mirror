@@ -49,10 +49,10 @@ var isRemoteNewer = function (dest, httpOpts, done) {
         console.log('HEADERS: ' + JSON.stringify(res.headers));
         done(true);
     })
-    .on('error', function (e) {
-        console.error(e);
-        done(false);
-    });
+        .on('error', function (e) {
+            console.error(e);
+            done(false);
+        });
     request.end();
 };
 
@@ -80,14 +80,14 @@ var download = function(dest, opts, done) {
             });
         });
     })
-    .on('error', function (e) {
-        console.error(e);
-        fs.unlink(dest, function () {
+        .on('error', function (e) {
+            console.error(e);
+            fs.unlink(dest, function () {
             // It's unlikely the file exists. In the general case, this
             // callback catches the error and...ignores it.
+            });
+            if (done) done('err: ' + e.message);
         });
-        if (done) done('err: ' + e.message);
-    });
 
     request.end();
 };

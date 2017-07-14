@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "lint": "./node_modules/.bin/eslint bin/* lib/*.js test/*.js",
+    "lintfix": "./node_modules/.bin/eslint --fix bin/* lib/*.js test/*.js",
     "test": "./node_modules/.bin/mocha"
   },
   "devDependencies": {
