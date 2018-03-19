@@ -87,7 +87,7 @@ var download = function(dest, opts, done) {
                                 return done(rerr);
                             }
                             files.forEach(function(filename) {
-                                fs.rename(filename, path.join(config.dbDir, path.basename(filename)));
+                                fs.renameSync(filename, path.join(config.dbDir, path.basename(filename)));
                             });
                             cleanupCallback();
                             return done();
