@@ -4,6 +4,10 @@
 var fs    = require('fs');
 var http  = require('http');
 var zlib  = require('zlib');
+var path = require('path');
+var tar = require('tar');
+var tmp = require('tmp');
+var recursive = require('recursive-readdir');
 
 var config = require('../lib/config');
 
@@ -13,7 +17,7 @@ var httpReqOpts = function () {
         hostname: config.hostName,
         port: config.hostPort,
         headers: {
-            'User-Agent': config.userAgent,
+            'User-Agent': config.userAgent
         },
         agent: false,
     };
@@ -65,20 +69,50 @@ var download = function(dest, opts, done) {
             return;
         }
 
-        var file = fs.createWriteStream(dest + '.tmp');
-        res.pipe(zlib.createGunzip()).pipe(file);
-        file.on('finish', function () {
-            // console.log("wrote to file " + dest + '.tmp');
-            file.close(function (err) {
-                if (err) throw err;
-                // console.log("moved " + dest + '.tmp to ' + dest);
-                fs.rename(dest + '.tmp', dest, function (err2) {
-                    if (err2) throw err2;
-                    console.log('saved ' + dest);
-                    done();
+        // handle tarballs as necessary
+        if (/\.tar\.gz$/.test(opts.path)) {
+            tmp.dir(
+                { unsafeCleanup: true },
+                function(err, tmpPath, cleanupCallback) {
+                    if (err) return done(err);
+                    var untar = tar.x({
+                        cwd: tmpPath,
+                        filter: function(path, entry) { return /\.mmdb$/.test(entry.path); }
+                    });
+                    untar.on('finish', function() {
+                        // walk temp dir, moving entries to config.dbDir
+                        recursive(tmpPath, function(err, files) {
+                            if (err) {
+                                cleanupCallback();
+                                return done(err);
+                            }
+                            files.forEach(function(filename) {
+                                fs.rename(filename, path.join(config.dbDir, path.basename(filename)));
+                            });
+                            cleanupCallback();
+                            return done();
+                        });
+                    });
+                    res.pipe(untar);
+                }
+            );
+        }
+        else {
+            var file = fs.createWriteStream(dest + '.tmp');
+            res.pipe(zlib.createGunzip()).pipe(file);
+            file.on('finish', function () {
+                // console.log("wrote to file " + dest + '.tmp');
+                file.close(function (err) {
+                    if (err) throw err;
+                    // console.log("moved " + dest + '.tmp to ' + dest);
+                    fs.rename(dest + '.tmp', dest, function (err2) {
+                        if (err2) throw err2;
+                        console.log('saved ' + dest);
+                        done();
+                    });
                 });
             });
-        });
+        }
     })
         .on('error', function (e) {
             console.error(e);

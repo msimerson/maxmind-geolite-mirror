@@ -44,5 +44,10 @@
     "bin",
     "lib",
     "test"
-  ]
+  ],
+  "dependencies": {
+    "recursive-readdir": "^2.2.2",
+    "tar": "^4.4.0",
+    "tmp": "^0.0.33"
+  }
 }
