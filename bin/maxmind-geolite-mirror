@@ -77,14 +77,14 @@ var download = function(dest, opts, done) {
                     if (err) return done(err);
                     var untar = tar.x({
                         cwd: tmpPath,
-                        filter: function(path, entry) { return /\.mmdb$/.test(entry.path); }
+                        filter: function(fpath, fentry) { return /\.mmdb$/.test(fentry.path); }
                     });
                     untar.on('finish', function() {
                         // walk temp dir, moving entries to config.dbDir
-                        recursive(tmpPath, function(err, files) {
-                            if (err) {
+                        recursive(tmpPath, function(rerr, files) {
+                            if (rerr) {
                                 cleanupCallback();
-                                return done(err);
+                                return done(rerr);
                             }
                             files.forEach(function(filename) {
                                 fs.rename(filename, path.join(config.dbDir, path.basename(filename)));
