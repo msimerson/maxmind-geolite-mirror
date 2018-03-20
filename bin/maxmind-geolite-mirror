@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-'use strict';
 
-var fs    = require('fs');
-var http  = require('http');
-var zlib  = require('zlib');
+const fs    = require('fs');
+const http  = require('http');
+const zlib  = require('zlib');
 
-var config = require('../lib/config');
+const config = require('../lib/config');
 
-var httpReqOpts = function () {
+function httpReqOpts () {
     return {
         method: 'HEAD',
         hostname: config.hostName,
@@ -17,62 +16,62 @@ var httpReqOpts = function () {
         },
         agent: false,
     };
-};
+}
 
-var isRemoteNewer = function (dest, httpOpts, done) {
+function isRemoteNewer (dest, httpOpts, done) {
 
     if (!fs.existsSync(dest)) {
         // console.log(dest + ' does not exist');
         return done(true);
     }
 
-    var stats = fs.statSync(dest);
+    const stats = fs.statSync(dest);
     if (!stats.isFile()) {
         console.error(dest + ' is not a file');
-        fs.unlink(dest, function () {
+        fs.unlink(dest, () => {
             console.log(dest + ' deleted');
             return done(true);
-        });
+        })
     }
 
     httpOpts.headers['If-Modified-Since'] = stats.mtime.toUTCString();
 
-    var request = http.request(httpOpts, function (res) {
+    const request = http.request(httpOpts, (res) => {
         if (res.statusCode === 304) {
             console.log(dest + ' is up-to-date');
             return done(false);
         }
-        if (res.statusCode === 200) {
-            return done(true);
-        }
+
+        if (res.statusCode === 200) return done(true);
+
         console.log(res.statusCode);
         console.log('HEADERS: ' + JSON.stringify(res.headers));
         done(true);
     })
-        .on('error', function (e) {
+        .on('error', (e) => {
             console.error(e);
             done(false);
         });
     request.end();
-};
+}
 
-var download = function(dest, opts, done) {
+function download (dest, opts, done) {
 
-    var request = http.request(opts, function (res) {
+    const request = http.request(opts, (res) => {
         if (res.statusCode !== 200) {
             console.error('response code ' + res.statusCode + ' not handled!');
             console.error('HEADERS: ' + JSON.stringify(res.headers));
             return;
         }
 
-        var file = fs.createWriteStream(dest + '.tmp');
+        const file = fs.createWriteStream(dest + '.tmp');
         res.pipe(zlib.createGunzip()).pipe(file);
-        file.on('finish', function () {
+        file.on('finish', () => {
             // console.log("wrote to file " + dest + '.tmp');
-            file.close(function (err) {
+            file.close((err) => {
                 if (err) throw err;
                 // console.log("moved " + dest + '.tmp to ' + dest);
-                fs.rename(dest + '.tmp', dest, function (err2) {
+                fs.rename(dest + '.tmp', dest, (err2) => {
                     if (err2) throw err2;
                     console.log('saved ' + dest);
                     done();
@@ -80,36 +79,36 @@ var download = function(dest, opts, done) {
             });
         });
     })
-        .on('error', function (e) {
+        .on('error', (e) => {
             console.error(e);
-            fs.unlink(dest, function () {
+            fs.unlink(dest, () => {
             // It's unlikely the file exists. In the general case, this
             // callback catches the error and...ignores it.
-            });
+            })
             if (done) done('err: ' + e.message);
-        });
+        })
 
     request.end();
-};
+}
 
-var doOne = function (item, done) {
+function doOne (item, done) {
 
-    var opts = new httpReqOpts();
+    const opts = new httpReqOpts();
     opts.path = config.urlPath + item.remote;
 
-    var dest = config.dbDir  + item.local;
+    const dest = config.dbDir  + item.local;
 
-    isRemoteNewer(dest, opts, function (shouldGet) {
+    isRemoteNewer(dest, opts, (shouldGet) => {
         if (!shouldGet) return done();
 
         console.log('downloading ' + dest);
         opts.method = 'GET';
         download(dest, opts, done);
-    });
-};
+    })
+}
 
 // check each file, in series (poor mans async.eachSeries)
 doOne(config.geoIpDbs.shift(), function iterator () {
     if (!config.geoIpDbs.length) return;
     doOne(config.geoIpDbs.shift(), iterator);
-});
+})

@@ -4,7 +4,7 @@ node_js:
     - "9"
     - "8"
     - "6"
-		#- "4"    Maintenance ending 2018-04-30
+    #- "4"    Maintenance ending 2018-04-30
     #- iojs   No longer maintained
     #- "0.12" Maintenance ending 2017-04-01
     #- "0.10" Maintenance ending 2016-10-01
