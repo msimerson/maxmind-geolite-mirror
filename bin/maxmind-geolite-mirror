@@ -107,14 +107,14 @@ function download (dest, opts, done) {
             });
         });
     })
-    .on('error', (e) => {
-        console.error(e);
-        fs.unlink(dest, () => {
-        // It's unlikely the file exists. In the general case, this
-        // callback catches the error and...ignores it.
-        })
-        if (done) done('err: ' + e.message);
-    });
+        .on('error', (e) => {
+            console.error(e);
+            fs.unlink(dest, () => {
+            // It's unlikely the file exists. In the general case, this
+            // callback catches the error and...ignores it.
+            })
+            if (done) done('err: ' + e.message);
+        });
 
     request.end();
 }
