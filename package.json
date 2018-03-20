@@ -7,9 +7,10 @@
     "name": "Matt Simerson",
     "url": "http://matt.simerson.net"
   },
-  "contributors": {
-    "name": "Tom Lee"
-  },
+  "contributors": [
+    { "name": "Carl Banbury"},
+    { "name": "Tom Lee" }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/msimerson/maxmind-geolite-mirror.git"

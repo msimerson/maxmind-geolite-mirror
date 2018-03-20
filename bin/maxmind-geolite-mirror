@@ -13,7 +13,7 @@ function httpReqOpts () {
         hostname: config.hostName,
         port: config.hostPort,
         headers: {
-            'User-Agent': config.userAgent
+            'User-Agent': config.userAgent,
         },
         agent: false,
     };
