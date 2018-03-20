@@ -1,6 +1,6 @@
 {
   "name": "maxmind-geolite-mirror",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "homepage": "https://github.com/msimerson/maxmind-geolite-mirror",
   "description": "Mirror maxmind dbs from geolite.maxmind.com",
   "author": {
@@ -8,7 +8,7 @@
     "url": "http://matt.simerson.net"
   },
   "contributors": {
-    "name": "Carl Banbury"
+    "name": "Tom Lee"
   },
   "repository": {
     "type": "git",
@@ -45,9 +45,7 @@
     "lib",
     "test"
   ],
-  "dependencies": {
-    "recursive-readdir": "^2.2.2",
-    "tar": "^4.4.0",
-    "tmp": "^0.0.33"
+  "optionalDependencies": {
+    "tar-stream": "^1.5.5"
   }
 }
