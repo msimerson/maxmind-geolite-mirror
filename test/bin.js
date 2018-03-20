@@ -1,11 +1,10 @@
-'use strict';
 
-var assert = require('assert');
+const assert = require('assert');
 
-describe('maxmind-geolite-mirror', function () {
-    it('can be required', function () {
-        var fetcher = require('../bin/maxmind-geolite-mirror');
+describe('maxmind-geolite-mirror', () => {
+    it('can be required', () => {
+        const fetcher = require('../bin/maxmind-geolite-mirror');
         assert.ok(fetcher);
-    });
-});
+    })
+})
 

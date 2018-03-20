@@ -1,42 +1,42 @@
 'use strict';
 
-var assert = require('assert');
-var rewire = require('rewire');
+const assert = require('assert');
+const rewire = require('rewire');
 
-var config = rewire('../lib/config');
+let config = rewire('../lib/config');
 
-describe('config', function () {
-    it('has dbDir', function () {
+describe('config', () => {
+    it('has dbDir', () => {
         assert.ok(config.dbDir);
     });
 
     it('has custom dbDir', function() {
-        var expected = '/foo/bar';
+        const expected = '/foo/bar';
         process.env.MAXMIND_DB_DIR = expected;
 
         config = rewire('../lib/config');
 
         assert.equal(config.dbDir, expected);
         delete process.env.MAXMIND_DB_DIR;
-    });
+    })
 
-    it('has geoIpDbs', function () {
+    it('has geoIpDbs', () => {
         assert.ok(config.geoIpDbs);
-    });
+    })
 
-    it('has UserAgent', function () {
+    it('has UserAgent', () => {
         assert.ok(config.userAgent);
-    });
+    })
 
-    it('has hostName', function () {
+    it('has hostName', () => {
         assert.ok(config.hostName);
-    });
+    })
 
-    it('has hostPort', function () {
+    it('has hostPort', () => {
         assert.ok(config.hostPort);
-    });
+    })
 
-    it('has urlPath', function () {
+    it('has urlPath', () => {
         assert.ok(config.urlPath);
-    });
-});
+    })
+})
