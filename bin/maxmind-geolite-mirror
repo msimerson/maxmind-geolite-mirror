@@ -91,7 +91,7 @@ function download (dest, opts, done) {
         // handle tarballs as necessary
         if (/\.tar\.gz$/.test(opts.path))
             return handleTarball(res, done);
-        
+
         const file = fs.createWriteStream(dest + '.tmp');
         res.pipe(zlib.createGunzip()).pipe(file);
         file.on('finish', () => {
