@@ -93,7 +93,6 @@ describe('maxmind-geolite-mirror', () => {
         config.dbDir = tmpDir.name + '/';
         config.urlPath = path.join(__dirname, 'fixtures') + '/';
         const item = { local: 'doOne-output.mmdb', remote: 'sample.mmdb.gz'};
-        const doOne = require('../bin/maxmind-geolite-mirror').doOne;
         mirror.doOne(item, (err) => {
             assert.equal(fs.readFileSync(path.join(config.dbDir, 'doOne-output.mmdb')).toString().trim(), 'success');
             tmpDir.removeCallback();
