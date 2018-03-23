@@ -39,7 +39,7 @@
     "eslint": "*",
     "mocha": "*",
     "rewire": "*",
-    "tmp": "^0.0.33"
+    "tmp": "*"
   },
   "license": "MIT",
   "files": [
