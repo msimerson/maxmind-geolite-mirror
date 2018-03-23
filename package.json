@@ -8,12 +8,8 @@
     "url": "http://matt.simerson.net"
   },
   "contributors": [
-    {
-      "name": "Carl Banbury"
-    },
-    {
-      "name": "Tom Lee"
-    }
+    { "name": "Carl Banbury" },
+    { "name": "Tom Lee" }
   ],
   "repository": {
     "type": "git",
