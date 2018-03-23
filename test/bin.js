@@ -18,13 +18,17 @@ function makeTempDir() {
 describe('maxmind-geolite-mirror', () => {
     const timestamp = +new Date();
 
-    it('can be required', () => {
+    it('can be required', (done) => {
         const tmpDir = makeTempDir();
         process.env.MAXMIND_DB_DIR = tmpDir.name;
         const fetcher = require('../bin/maxmind-geolite-mirror');
         assert.ok(fetcher);
-        tmpDir.removeCallback();
-    });
+        fetcher.main( (err) => {
+            assert.ok(!err);
+            tmpDir.removeCallback();
+            done();
+        });
+    }).timeout(60000);
 
     it('can stub http.request', () => {
         // stub request to handle local files
@@ -38,7 +42,7 @@ describe('maxmind-geolite-mirror', () => {
 
     it('can handle gzip', (done) => {
         const tmpDir = makeTempDir();
-        const fetcher = require('../bin/maxmind-geolite-mirror');
+        const fetcher = require('../bin/maxmind-geolite-mirror').download;
         const outfile = path.join(tmpDir.name, `sample-${timestamp}-1.mmdb`);
         fetcher(outfile, { path: path.join(__dirname, 'fixtures', 'sample.mmdb.gz')}, (err) => {
             assert.equal(fs.readFileSync(outfile).toString().trim(), 'success');
@@ -49,7 +53,7 @@ describe('maxmind-geolite-mirror', () => {
 
     it('can handle tarball', (done) => {
         const tmpDir = makeTempDir();
-        const fetcher = require('../bin/maxmind-geolite-mirror');
+        const fetcher = require('../bin/maxmind-geolite-mirror').download;
         const outfile = path.join(tmpDir.name, `sample-${timestamp}-2.mmdb`);
         fetcher(outfile, { path: path.join(__dirname, 'fixtures', 'sample.tar.gz')}, (err) => {
             assert.equal(fs.readFileSync(outfile).toString().trim(), 'success');
@@ -60,7 +64,7 @@ describe('maxmind-geolite-mirror', () => {
 
     it('can handle multi-mmdb tarball', (done) => {
         const tmpDir = makeTempDir();
-        const fetcher = require('../bin/maxmind-geolite-mirror');
+        const fetcher = require('../bin/maxmind-geolite-mirror').download;
         const outfile = path.join(tmpDir.name, `sample-${timestamp}-3.mmdb`);
         fetcher(outfile, { path: path.join(__dirname, 'fixtures', 'sample-multi.tar.gz')}, (err) => {
             assert.equal(fs.readFileSync(outfile).toString().trim(), 'success');
