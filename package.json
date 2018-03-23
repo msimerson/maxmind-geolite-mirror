@@ -38,7 +38,8 @@
     "contributors": "*",
     "eslint": "*",
     "mocha": "*",
-    "rewire": "*"
+    "rewire": "*",
+    "tmp": "^0.0.33"
   },
   "license": "MIT",
   "files": [
@@ -47,7 +48,6 @@
     "test"
   ],
   "optionalDependencies": {
-    "tar-stream": "^1.5.5",
-    "tmp": "^0.0.33"
+    "tar-stream": "^1.5.5"
   }
 }
