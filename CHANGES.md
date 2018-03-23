@@ -1,3 +1,10 @@
+## 1.1.0 - 2018-03-23
+
+- Expand test system & move fully offline
+- Move most code into `lib/mm-geolite-mirror.js`, reduce `bin/maxmind-geolite-mirror` surface
+- Support node 4 again via `use strict`
+- Fix bugs in `.tar.gz` handling
+
 ## 1.0.9 - 2018-03-19
 
 - add geolite2-ASN db to list (from #16 by Tom Lee)
