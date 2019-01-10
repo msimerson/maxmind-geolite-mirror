@@ -1,3 +1,10 @@
+## 1.1.1 - 2019-01-09
+
+- test node.js v10 (had 9)
+- some es6 updates
+- handle 404 errors (fixes #21)
+- bump version of tar-stream to 1.6.2
+
 ## 1.1.0 - 2018-03-23
 
 - Expand test system & move fully offline
