@@ -1,5 +1,6 @@
 ## 1.1.1 - 2019-01-09
 
+- remove geoip DBs no longer served by MM
 - test node.js v10 (had 9)
 - some es6 updates
 - handle 404 errors (fixes #21)
