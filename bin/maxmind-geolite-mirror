@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 'use strict';
 
+const cons   = require('../lib/console');
 const config = require('../lib/config');
 const mirror = require('../lib/mm-geolite-mirror');
 
 if (require.main === module) {
     // check each file, in series (poor mans async.eachSeries)
-    mirror.doOne(config.geoIpDbs.shift(), function iterator () {
+    mirror.doOne(config.geoIpDbs.shift(), function iterator (err) {
+        if (err) {
+            cons.error(err)
+            if (config.geoIpDbs.length) cons.log('exiting prematurely.')
+            process.exit(1)
+        }
         if (!config.geoIpDbs.length) return;
         mirror.doOne(config.geoIpDbs.shift(), iterator);
-    });
+    })
 }
