@@ -49,6 +49,6 @@
     "test"
   ],
   "optionalDependencies": {
-    "tar-stream": "^1.6.2"
+    "tar-stream": "^2.0.0"
   }
 }
