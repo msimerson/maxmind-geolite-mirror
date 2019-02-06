@@ -1,3 +1,9 @@
+
+## 1.1.2 - 2019-01-29
+
+- pass errors via cb (vs ignore or throw)
+- more conversion to es6 template strings
+
 ## 1.1.1 - 2019-01-09
 
 - remove geoip DBs no longer served by MM
