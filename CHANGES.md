@@ -1,4 +1,8 @@
 
+## 1.1.3 - 2019-02-20
+
+- remove v1 .dat files from config, MaxMind no longer publishing
+
 ## 1.1.2 - 2019-01-29
 
 - pass errors via cb (vs ignore or throw)
