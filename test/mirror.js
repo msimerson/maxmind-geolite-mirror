@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.MM_TESTING = 1;
+
 const fs     = require('fs');
 const https  = require('https');
 const path   = require('path');
