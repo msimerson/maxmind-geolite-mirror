@@ -3,7 +3,7 @@
 const assert = require('assert');
 const rewire = require('rewire');
 
-let config = rewire('../lib/config');
+let config   = rewire('../lib/config');
 
 describe('config', () => {
     it('has dbDir', () => {
