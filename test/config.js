@@ -32,10 +32,6 @@ describe('config', () => {
         assert.ok(config.hostName);
     })
 
-    it('has hostPort', () => {
-        assert.ok(config.hostPort);
-    })
-
     it('has urlPath', () => {
         assert.ok(config.urlPath);
     })
