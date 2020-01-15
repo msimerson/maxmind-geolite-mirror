@@ -21,6 +21,9 @@
   "bin": {
     "maxmind-geolite-mirror": "./bin/maxmind-geolite-mirror"
   },
+  "engines": {
+    "node": ">= v10.18.1"
+  },
   "main": "bin/maxmind-geolite-mirror",
   "keywords": [
     "geolite",
