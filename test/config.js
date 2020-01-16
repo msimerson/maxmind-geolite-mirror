@@ -3,7 +3,7 @@
 const assert = require('assert');
 const rewire = require('rewire');
 
-let config = rewire('../lib/config');
+let config   = rewire('../lib/config');
 
 describe('config', () => {
     it('has dbDir', () => {
@@ -30,10 +30,6 @@ describe('config', () => {
 
     it('has hostName', () => {
         assert.ok(config.hostName);
-    })
-
-    it('has hostPort', () => {
-        assert.ok(config.hostPort);
     })
 
     it('has urlPath', () => {

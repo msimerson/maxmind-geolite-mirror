@@ -1,9 +1,11 @@
 language: node_js
 
 node_js:
-    - "8"
-    - "10"
+    - "13"
     - "12"
+    - "10"
+    #- "8"    Maintenance ended 2019-12-31
+    #- "6"
     #- "4"    Maintenance ending 2018-04-30
     #- iojs   No longer maintained
     #- "0.12" Maintenance ending 2017-04-01

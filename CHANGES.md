@@ -1,4 +1,8 @@
 
+## 1.1.4 - 2020-01-14
+
+- updated to use MaxMind license key (see #32)
+
 ## 1.1.3 - 2019-02-20
 
 - remove v1 .dat files from config, MaxMind no longer publishing

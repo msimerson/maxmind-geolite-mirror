@@ -1,28 +1,33 @@
 'use strict';
 
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
+process.env.MM_TESTING = 1;
+
+const fs     = require('fs');
+const https  = require('https');
+const path   = require('path');
 const assert = require('assert');
-const tmp = require('tmp');
+const tmp    = require('tmp');
 
 const config = require('../lib/config');
 const mirror = require('../lib/mm-geolite-mirror');
+const reqArgs = {
+    protocol: 'https:',
+    hostname: config.hostName,
+}
 
 describe('maxmind-geolite-mirror', () => {
     it('httpReqOpts', (done) => {
-        const opts = mirror.httpReqOpts();
+        const opts = mirror.httpReqOpts(reqArgs);
         assert.equal(opts.method, 'HEAD');
         assert.equal(opts.hostname, config.hostName);
-        assert.equal(opts.port, config.hostPort);
         assert.equal(opts.headers['User-Agent'], config.userAgent);
         assert.ok(!opts.agent);
         done();
-    });
+    })
 
-    it('can detect unchanged files with isRemoteNewer', (done) => {
+    it('detects unchanged files with isRemoteNewer', (done) => {
         // stub request to deliver a 304
-        http.request = (opts, callback) => {
+        https.request = (opts, callback) => {
             const res = { statusCode: 304 };
             callback(res);
             return { on: () => { return { end: () => {} } } }; // stub method chaining
@@ -31,12 +36,12 @@ describe('maxmind-geolite-mirror', () => {
         mirror.isRemoteNewer(path.join(__dirname, 'fixtures', 'sample.mmdb.gz'), { headers: {} }, (result) => {
             assert.equal(result, false);
             done();
-        });
-    });
+        })
+    })
 
-    it('can detect changed files with isRemoteNewer', (done) => {
+    it('detects changed files with isRemoteNewer', (done) => {
         // stub request to deliver a 200
-        http.request = (opts, callback) => {
+        https.request = (opts, callback) => {
             const res = { statusCode: 200 };
             callback(res);
             return { on: () => { return { end: () => {} } } }; // stub method chaining
@@ -46,17 +51,17 @@ describe('maxmind-geolite-mirror', () => {
             assert.equal(result, true);
             done();
         });
-    });
+    })
 
     it('can stub http.request for remaining tests', () => {
         // stub request to handle local files
-        http.request = (opts, callback) => {
+        https.request = (opts, callback) => {
             const res = fs.createReadStream(opts.path);
             res.statusCode = 200;
             callback(res);
             return { on: () => { return { end: () => {} } } }; // stub method chaining
         };
-    });
+    })
 
     it('can handle gzip', (done) => {
         const tmpDir = tmp.dirSync({ unsafeCleanup: true });
@@ -66,7 +71,7 @@ describe('maxmind-geolite-mirror', () => {
             tmpDir.removeCallback();
             done(err);
         });
-    });
+    })
 
     it('can handle tarball', (done) => {
         const tmpDir = tmp.dirSync({ unsafeCleanup: true });
@@ -76,7 +81,7 @@ describe('maxmind-geolite-mirror', () => {
             tmpDir.removeCallback();
             done(err);
         });
-    });
+    })
 
     it('can handle multi-mmdb tarball', (done) => {
         const tmpDir = tmp.dirSync({ unsafeCleanup: true });
@@ -86,7 +91,7 @@ describe('maxmind-geolite-mirror', () => {
             tmpDir.removeCallback();
             done(err);
         });
-    });
+    })
 
     it('can run doOne', (done) => {
         const tmpDir = tmp.dirSync({ unsafeCleanup: true });
@@ -98,5 +103,5 @@ describe('maxmind-geolite-mirror', () => {
             tmpDir.removeCallback();
             done(err);
         });
-    });
-});
+    })
+})
