@@ -1,4 +1,8 @@
 
+## 1.1.5 - 2020-01-14
+
+- permit license key to be stored in ENV variable #34
+
 ## 1.1.4 - 2020-01-14
 
 - updated to use MaxMind license key (see #32)
