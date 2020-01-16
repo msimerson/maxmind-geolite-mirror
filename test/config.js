@@ -20,6 +20,15 @@ describe('config', () => {
         delete process.env.MAXMIND_DB_DIR;
     })
 
+    it('license defined in ENV', function() {
+        process.env.MAXMIND_LICENSE_KEY = 'test';
+
+        config = rewire('../lib/config');
+
+        assert.equal(config.license_key, 'test');
+        delete process.env.MAXMIND_LICENSE_KEY;
+    })
+
     it('has geoIpDbs', () => {
         assert.ok(config.geoIpDbs);
     })

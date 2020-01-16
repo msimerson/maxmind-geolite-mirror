@@ -6,7 +6,7 @@
 
 # maxmind-geolite-mirror
 
-Mirror maxmind GeoIP databases from geolite.maxmind.com. Geolite version 1 and version 2 databases are mirrored.
+Mirror maxmind GeoIP version 2 databases from maxmind.com.
 
 ## Install
 
@@ -15,6 +15,15 @@ Mirror maxmind GeoIP databases from geolite.maxmind.com. Geolite version 1 and v
     /usr/local/bin/maxmind-geolite-mirror
 
 The last command will download all the databases to the GeoIP share directory.
+
+## Configure
+
+The MaxMind license key must be configured. It can be set by:
+
+1. editing config.js
+2. setting the environment variable MAXMIND_LICENSE_KEY
+
+If neither is set, the script will emit an error prompting you to edit config.js.
 
 ## Update databases
 
