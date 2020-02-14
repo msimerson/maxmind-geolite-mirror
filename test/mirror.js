@@ -33,7 +33,7 @@ describe('maxmind-geolite-mirror', () => {
             return { on: () => { return { end: () => {} } } }; // stub method chaining
         };
 
-        mirror.isRemoteNewer(path.join(__dirname, 'fixtures', 'sample.mmdb.gz'), { headers: {} }, (result) => {
+        mirror.isRemoteNewer(path.join(__dirname, 'fixtures', 'sample.mmdb.tar.gz'), { headers: {} }, (result) => {
             assert.equal(result, false);
             done();
         })
@@ -63,16 +63,6 @@ describe('maxmind-geolite-mirror', () => {
         };
     })
 
-    it('can handle gzip', (done) => {
-        const tmpDir = tmp.dirSync({ unsafeCleanup: true });
-        const outfile = path.join(tmpDir.name, `sample-1.mmdb`);
-        mirror.download(outfile, { path: path.join(__dirname, 'fixtures', 'sample.mmdb.gz')}, (err) => {
-            assert.equal(fs.readFileSync(outfile).toString().trim(), 'success');
-            tmpDir.removeCallback();
-            done(err);
-        });
-    })
-
     it('can handle tarball', (done) => {
         const tmpDir = tmp.dirSync({ unsafeCleanup: true });
         const outfile = path.join(tmpDir.name, `sample-2.mmdb`);
@@ -97,7 +87,7 @@ describe('maxmind-geolite-mirror', () => {
         const tmpDir = tmp.dirSync({ unsafeCleanup: true });
         config.dbDir = `${tmpDir.name}/`;
         config.urlPath = `${path.join(__dirname, 'fixtures')}/`;
-        const item = { local: 'doOne-output.mmdb', remote: 'sample.mmdb.gz'};
+        const item = { local: 'doOne-output.mmdb', remote: 'sample.mmdb.tar.gz'};
         mirror.doOne(item, (err) => {
             assert.equal(fs.readFileSync(path.join(config.dbDir, 'doOne-output.mmdb')).toString().trim(), 'success');
             tmpDir.removeCallback();

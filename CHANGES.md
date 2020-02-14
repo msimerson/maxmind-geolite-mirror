@@ -1,4 +1,8 @@
 
+## 1.1.6 - 2020-02-13
+
+- expand archives, despite new URL format w/o extension
+
 ## 1.1.5 - 2020-01-14
 
 - permit license key to be stored in ENV variable #34
