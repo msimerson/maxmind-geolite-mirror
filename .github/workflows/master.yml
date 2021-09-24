@@ -11,7 +11,7 @@ env:
 
 jobs:
 
-  publish-gpr:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,6 +37,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: GitHub Release
-        uses: justincy/github-action-npm-release@2.0.1
-        id: release
+      # - name: GitHub Release
+      #   uses: justincy/github-action-npm-release@2.0.1
+      #   id: release
