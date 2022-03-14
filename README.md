@@ -55,5 +55,5 @@ Contributions are welcome and appreciated. Please keep in mind the following:
 
 ### NPM
 
-[![NPM][https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true]][https://nodei.co/npm/maxmind-geolite-mirror/]
+[![NPM](https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true)](https://nodei.co/npm/maxmind-geolite-mirror/)
 

@@ -29,16 +29,16 @@ jobs:
       env:
         NODE_ENV: cov
 
-    - name: Coveralls Report
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.github_token }}
-
     - name: Codecov Report
       uses: codecov/codecov-action@v2
       with:
         name: codecov-umbrella
         files: ./coverage.lcov
+
+    - name: Coveralls Report
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
 
     - name: CodeClimate Reporter
       uses: paambaati/codeclimate-action@v3.0.0
