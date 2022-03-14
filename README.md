@@ -1,6 +1,6 @@
-[![Build Status][ci-image]][ci-url]
-[![Coverage Status][cov-img]][cov-url]
-[![NPM][npm-image]][npm-url]
+[![Build Status](https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml/badge.svg)](https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/msimerson/maxmind-geolite-mirror/badge.svg?branch=master)](https://coveralls.io/github/msimerson/maxmind-geolite-mirror?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1d989637c36373336fa3/maintainability)](https://codeclimate.com/github/msimerson/maxmind-geolite-mirror/maintainability)
 
 
 # maxmind-geolite-mirror
@@ -52,11 +52,8 @@ Contributions are welcome and appreciated. Please keep in mind the following:
 - Carl Banbury
 - Tom Lee
 
-### badges
 
-[ci-image]: https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml/badge.svg
-[ci-url]:  https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml
-[cov-img]: https://codecov.io/github/msimerson/maxmind-geolite-mirror/coverage.svg?branch=master
-[cov-url]: https://codecov.io/github/msimerson/maxmind-geolite-mirror?branch=master
-[npm-image]: https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true
-[npm-url]: https://nodei.co/npm/maxmind-geolite-mirror/
+### NPM
+
+[![NPM](https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true)](https://nodei.co/npm/maxmind-geolite-mirror/)
+
