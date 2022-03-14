@@ -1,0 +1,46 @@
+
+on: [ pull_request ]
+
+name: Test Coverage
+
+jobs:
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@master
+      name: Checkout Module
+      with:
+        fetch-depth: 1
+
+    - name: Use Node.js 14
+      uses: actions/setup-node@master
+      with:
+        node-version: 14
+
+    - run: |
+        npm install
+        npm install --no-save nyc codecov
+
+    - run: npx nyc --reporter=lcovonly npm test
+      env:
+        NODE_ENV: cov
+
+    - name: Coveralls Report
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+
+    - name: Codecov Report
+      uses: codecov/codecov-action@v2
+      with:
+        name: codecov-umbrella
+        files: ./coverage.lcov
+
+    - name: CodeClimate Reporter
+      uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: d196ece82e5a76cc8ef4b7abe23d45a48106e0b4f3775070655ecc72a4b06cb2
