@@ -52,11 +52,12 @@ Contributions are welcome and appreciated. Please keep in mind the following:
 - Carl Banbury
 - Tom Lee
 
+
 ### badges
 
 [ci-image]: https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml/badge.svg
 [ci-url]:  https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml
-[cov-img]: https://codecov.io/github/msimerson/maxmind-geolite-mirror/coverage.svg?branch=master
-[cov-url]: https://codecov.io/github/msimerson/maxmind-geolite-mirror?branch=master
+[cov-img]: https://coveralls.io/repos/github/msimerson/maxmind-geolite-mirror/badge.svg?branch=master
+[cov-url]: https://coveralls.io/github/msimerson/maxmind-geolite-mirror?branch=master
 [npm-image]: https://nodei.co/npm/maxmind-geolite-mirror.png?downloads=true&stars=true
 [npm-url]: https://nodei.co/npm/maxmind-geolite-mirror/
