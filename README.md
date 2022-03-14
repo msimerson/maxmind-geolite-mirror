@@ -1,5 +1,5 @@
-[![Build Status][https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml/badge.svg]][https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml]
-[![Coverage Status][https://coveralls.io/repos/github/msimerson/maxmind-geolite-mirror/badge.svg?branch=master]][https://coveralls.io/github/msimerson/maxmind-geolite-mirror?branch=master]
+[![Build Status](https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml/badge.svg)](https://github.com/msimerson/maxmind-geolite-mirror/actions/workflows/ci-test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/msimerson/maxmind-geolite-mirror/badge.svg?branch=master)](https://coveralls.io/github/msimerson/maxmind-geolite-mirror?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1d989637c36373336fa3/maintainability)](https://codeclimate.com/github/msimerson/maxmind-geolite-mirror/maintainability)
 
 
