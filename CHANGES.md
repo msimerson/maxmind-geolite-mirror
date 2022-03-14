@@ -1,4 +1,9 @@
 
+### 1.1.8 - 2022-03-14
+
+- update CI images (goes with 1.1.7)
+
+
 ### 1.1.7 - 2021-09-24
 
 - switch CI to GHA
