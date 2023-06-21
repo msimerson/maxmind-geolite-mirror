@@ -2,21 +2,24 @@ name: Lint
 
 on: [ push, pull_request ]
 
+env:
+  CI: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [ 16.x ]
+        node-version: [ 18 ]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Checkout Code
         with:
           fetch-depth: 1
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         name: Use Node.js ${{ matrix.node-version }}
         with:
           node-version: ${{ matrix.node-version }}
@@ -27,5 +30,3 @@ jobs:
       - name: Lint using eslint
         run: npm run lint
 
-        env:
-          CI: true

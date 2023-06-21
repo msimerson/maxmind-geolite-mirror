@@ -1,6 +1,6 @@
 {
   "name": "maxmind-geolite-mirror",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "homepage": "https://github.com/msimerson/maxmind-geolite-mirror",
   "description": "Mirror maxmind dbs from geolite.maxmind.com",
   "author": {
@@ -26,7 +26,7 @@
     "maxmind-geolite-mirror": "./bin/maxmind-geolite-mirror"
   },
   "engines": {
-    "node": ">= v12.0.0"
+    "node": ">= v14.0.0"
   },
   "main": "bin/maxmind-geolite-mirror",
   "keywords": [
@@ -43,11 +43,10 @@
     "versions": "npx dependency-version-checker check"
   },
   "devDependencies": {
-    "contributors": "*",
-    "eslint": ">=7",
-    "mocha": "*",
-    "rewire": "*",
-    "tmp": "*"
+    "eslint": "^8.43.0",
+    "mocha": "^10.2.0",
+    "rewire": "^6.0.0",
+    "tmp": "^0.2.1"
   },
   "license": "MIT",
   "files": [
@@ -56,6 +55,6 @@
     "test"
   ],
   "optionalDependencies": {
-    "tar-stream": "^2.1.0"
+    "tar-stream": "^3.1.3"
   }
 }

@@ -1,4 +1,13 @@
 
+### Unreleased
+
+### 1.2.0 - 2023-06-20
+
+- bump dep versions to latest
+- ci: add .release
+- deps(contributors): removed, vuln, not maintained
+
+
 ### 1.1.8 - 2022-03-14
 
 - update CI images (goes with 1.1.7)
@@ -80,3 +89,4 @@
 ### 1.0.4 - 2015-06-23  @cbanbury
 
 - allow configurable db dir with MAXMIND_DB_DIR
+[1.2.0]: https://github.com/msimerson/maxmind-geolite-mirror/releases/tag/1.2.0

@@ -5,9 +5,11 @@ on:
   push:
     branches:
       - master
+    paths:
+      - package.json
 
 env:
-  node_version: 14
+  node_version: 18
 
 jobs:
 
@@ -16,12 +18,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Setup node.js ${{ env.node_version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           registry-url: https://registry.npmjs.org/
           node-version: ${{ env.node_version }}
@@ -36,7 +38,3 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # - name: GitHub Release
-      #   uses: justincy/github-action-npm-release@2.0.1
-      #   id: release
