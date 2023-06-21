@@ -1,6 +1,12 @@
 
 ### Unreleased
 
+### 1.2.0 - 2023-06-20
+
+- bump dep versions to latest
+- ci: add .release
+- deps(contributors): removed, vuln, not maintained
+
 
 ### 1.1.8 - 2022-03-14
 
