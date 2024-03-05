@@ -1,6 +1,13 @@
 
 ### Unreleased
 
+
+### [1.3.0] - 2024-03-04
+
+- feat: follow 302 redirect
+- bump dep versions to latest
+
+
 ### 1.2.0 - 2023-06-20
 
 - bump dep versions to latest
@@ -90,3 +97,4 @@
 
 - allow configurable db dir with MAXMIND_DB_DIR
 [1.2.0]: https://github.com/msimerson/maxmind-geolite-mirror/releases/tag/1.2.0
+[1.3.0]: https://github.com/msimerson/maxmind-geolite-mirror/releases/tag/1.3.0
