@@ -4,8 +4,7 @@
 
 ### [1.3.0] - 2024-03-04
 
-
-- 
+- feat: follow 302 redirect
 - bump dep versions to latest
 
 
